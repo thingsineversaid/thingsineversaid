@@ -56,6 +56,8 @@
             font-size: 14px;
             letter-spacing: 2px;
             transition: 0.3s;
+            cursor: pointer;
+            background: transparent;
         }
 
         .enter-button:hover {
@@ -68,6 +70,59 @@
             font-size: 12px;
             opacity: 0.6;
         }
+
+        /* Password Box */
+
+        .password-box {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-top: 1px solid #d4c8c0;
+            border-bottom: 1px solid #d4c8c0;
+        }
+
+        .password-box p {
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .password-input {
+            width: 100%;
+            max-width: 250px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #b8aaa2;
+            background: transparent;
+            color: #4b4141;
+            text-align: center;
+            font-family: Georgia, serif;
+            outline: none;
+        }
+
+        .unlock-button {
+            margin-top: 15px;
+            padding: 10px 25px;
+            border: 1px solid #8c7b7b;
+            background: transparent;
+            color: #4b4141;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            letter-spacing: 1px;
+        }
+
+        .unlock-button:hover {
+            background: #4b4141;
+            color: white;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 12px;
+            font-size: 13px;
+            font-style: italic;
+        }
+
     </style>
 </head>
 
@@ -77,7 +132,7 @@
 
         <div class="heart">♡</div>
 
-        <h1>WELCOME TO MY
+        <h1>WELCOME TO MY<br>
         BRAIN DUMP</h1>
 
         <div class="subtitle">
@@ -85,7 +140,35 @@
             Proceed at your own risk. :D
         </div>
 
-        <a href="#" class="enter-button">ENTER</a>
+        <button class="enter-button" onclick="showPassword()">
+            ENTER
+        </button>
+
+        <div class="password-box" id="passwordBox">
+
+            <p>
+                🔐 A little clue:<br>
+                The password is my father's birthday.
+            </p>
+
+            <input
+                type="password"
+                id="passwordInput"
+                class="password-input"
+                placeholder="Enter password"
+            >
+
+            <br>
+
+            <button class="unlock-button" onclick="checkPassword()">
+                UNLOCK
+            </button>
+
+            <div class="error-message" id="errorMessage">
+                Hmm... that's not it. Try again. :D
+            </div>
+
+        </div>
 
         <div class="footer">
             A little place for my thoughts, feelings, and stories.
@@ -93,6 +176,39 @@
         </div>
 
     </div>
+
+
+    <script>
+
+        function showPassword() {
+            document.getElementById("passwordBox").style.display = "block";
+            document.getElementById("passwordInput").focus();
+        }
+
+        function checkPassword() {
+
+            const password = document.getElementById("passwordInput").value;
+
+            /*
+            GANTI PASSWORD DI BAWAH INI
+            Contoh:
+            "15011965"
+            */
+
+            const correctPassword = "GANTI_DENGAN_PASSWORDMU";
+
+            if (password === correctPassword) {
+
+                window.location.href = "diary.html";
+
+            } else {
+
+                document.getElementById("errorMessage").style.display = "block";
+
+            }
+        }
+
+    </script>
 
 </body>
 </html>
