@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Place To Feel — Diary</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #f7f1eb;
+            color: #4b4141;
+            font-family: Georgia, serif;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin: auto;
+            padding: 45px 0 80px;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back {
+            display: inline-block;
+            color: #6f6262;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 65px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            opacity: 0.5;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+            padding-bottom: 70px;
+            border-bottom: 1px solid #d4c8c0;
+        }
+
+        .heart {
+            font-size: 29px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 38px;
+            font-weight: normal;
+            letter-spacing: 4px;
+        }
+
+        .hero-text {
+            max-width: 550px;
+            margin: 22px auto 0;
+            font-size: 15px;
+            font-style: italic;
+            opacity: 0.75;
+        }
+
+        .date {
+            margin-top: 25px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            opacity: 0.55;
+        }
+
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            padding: 65px 10px 50px;
+            text-align: center;
+        }
+
+        .intro p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .intro .small {
+            font-size: 13px;
+            font-style: italic;
+            opacity: 0.6;
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: #d4c8c0;
+            border: 1px solid #d4c8c0;
+        }
+
+        .menu a {
+            background: #f7f1eb;
+            padding: 28px 20px;
+            text-decoration: none;
+            color: #4b4141;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: #eee5dd;
+        }
+
+        .menu-number {
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        .menu-title {
+            margin-top: 7px;
+            font-size: 16px;
+        }
+
+        .menu-description {
+            margin-top: 5px;
+            font-size: 12px;
+            font-style: italic;
+            opacity: 0.6;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 85px 0;
+            border-bottom: 1px solid #d4c8c0;
+        }
+
+        .section-number {
+            font-size: 11px;
+            letter-spacing: 3px;
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 0 0 25px;
+            font-size: 27px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .section-text {
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           BRAIN DUMP
+        ========================= */
+
+        .thought {
+            margin-top: 30px;
+            padding: 25px;
+            border-left: 1px solid #8c7b7b;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .thought p {
+            margin: 0;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+
+        /* =========================
+           ABOUT ME
+        ========================= */
+
+        .facts {
+            margin-top: 30px;
+        }
+
+        .fact {
+            padding: 16px 0;
+            border-bottom: 1px solid #ddd2ca;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .fact:last-child {
+            border-bottom: none;
+        }
+
+        .fact-title {
+            opacity: 0.55;
+            font-size: 13px;
+        }
+
+        .fact-value {
+            text-align: right;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           LITTLE THINGS
+        ========================= */
+
+        .little-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .little-card {
+            padding: 25px;
+            border: 1px solid #d4c8c0;
+            min-height: 150px;
+        }
+
+        .little-card h3 {
+            margin: 0 0 10px;
+            font-size: 17px;
+            font-weight: normal;
+        }
+
+        .little-card p {
+            margin: 0;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+
+        /* =========================
+           THINGS I NEVER SAID
+        ========================= */
+
+        .letter {
+            margin-top: 30px;
+            padding: 35px;
+            background: #efe6de;
+        }
+
+        .letter p {
+            margin: 0 0 18px;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .letter p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           DIARY ARCHIVE
+        ========================= */
+
+        .archive {
+            margin-top: 35px;
+        }
+
+        .entry {
+            border-top: 1px solid #d4c8c0;
+        }
+
+        .entry:last-child {
+            border-bottom: 1px solid #d4c8c0;
+        }
+
+        .entry-header {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: #4b4141;
+            padding: 22px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-family: Georgia, serif;
+            cursor: pointer;
+        }
+
+        .entry-header:hover {
+            color: #756565;
+        }
+
+        .entry-date {
+            font-size: 12px;
+            opacity: 0.55;
+            margin-bottom: 4px;
+        }
+
+        .entry-title {
+            font-size: 16px;
+        }
+
+        .arrow {
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .entry-content {
+            display: none;
+            padding: 0 0 25px;
+            font-size: 14px;
+            line-height: 1.9;
+            opacity: 0.8;
+            white-space: pre-line;
+        }
+
+        .entry.active .entry-content {
+            display: block;
+        }
+
+        .entry.active .arrow {
+            transform: rotate(180deg);
+        }
+
+
+        /* =========================
+           FINAL MESSAGE
+        ========================= */
+
+        .final-message {
+            text-align: center;
+            padding: 80px 10px 40px;
+        }
+
+        .final-message .heart {
+            margin-bottom: 15px;
+        }
+
+        .final-message p {
+            margin: 7px 0;
+            font-size: 14px;
+        }
+
+        .final-message .italic {
+            font-style: italic;
+            opacity: 0.65;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.45;
+            margin-top: 30px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 88%;
+                padding-top: 30px;
+            }
+
+            .back {
+                margin-bottom: 45px;
+            }
+
+            h1 {
+                font-size: 29px;
+                letter-spacing: 3px;
+            }
+
+            .hero-text {
+                font-size: 14px;
+            }
+
+            .menu {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .little-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .little-card {
+                min-height: auto;
+            }
+
+            .letter {
+                padding: 25px;
+            }
+
+            .fact {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .fact-value {
+                text-align: left;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- BACK -->
+
+    <a href="index.html" class="back">
+        ← go back
+    </a>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="heart">♡</div>
+
+        <h1>
+            A PLACE TO FEEL
+        </h1>
+
+        <div class="hero-text">
+
+            So... you made it here.
+
+            <br>
+
+            I guess you were curious enough.
+
+        </div>
+
+        <div class="date" id="currentDate"></div>
+
+    </div>
+
+
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+        <p>
+            Welcome to the less organized part of my brain.
+        </p>
+
+        <p>
+            Some stories are here.
+            Some thoughts are here.
+            Some things probably shouldn't be here.
+        </p>
+
+        <p class="small">
+            But well... you're already here. :)
+        </p>
+
+    </div>
+
+
+
+    <!-- MENU -->
+
+    <div class="menu">
+
+        <a href="#brain-dump">
+
+            <div class="menu-number">
+                01
+            </div>
+
+            <div class="menu-title">
+                My Brain Dump
+            </div>
+
+            <div class="menu-description">
+                things currently living in my head
+            </div>
+
+        </a>
+
+
+        <a href="#about">
+
+            <div class="menu-number">
+                02
+            </div>
+
+            <div class="menu-title">
+                Things About Me
+            </div>
+
+            <div class="menu-description">
+                little pieces of who I am
+            </div>
+
+        </a>
+
+
+        <a href="#little">
+
+            <div class="menu-number">
+                03
+            </div>
+
+            <div class="menu-title">
+                Little Things
+            </div>
+
+            <div class="menu-description">
+                tiny things that make me happy
+            </div>
+
+        </a>
+
+
+        <a href="#never-said">
+
+            <div class="menu-number">
+                04
+            </div>
+
+            <div class="menu-title">
+                Things I Never Said
+            </div>
+
+            <div class="menu-description">
+                words that stayed inside
+            </div>
+
+        </a>
+
+
+        <a href="#archive">
+
+            <div class="menu-number">
+                05
+            </div>
+
+            <div class="menu-title">
+                Diary Archive
+            </div>
+
+            <div class="menu-description">
+                pieces of my days
+            </div>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         BRAIN DUMP
+    ========================= -->
+
+    <section id="brain-dump">
+
+        <div class="section-number">
+            01 — BRAIN DUMP
+        </div>
+
+        <h2>
+            What's on my mind?
+        </h2>
+
+        <div class="section-text">
+
+            Honestly, I don't always know.
+
+            <br><br>
+
+            Sometimes my brain is quiet.
+
+            Sometimes it has approximately
+            700 tabs open at the same time.
+
+        </div>
+
+
+        <div class="thought">
+
+            <p>
+                "Maybe I'm not overthinking.
+                Maybe I'm just thinking... professionally."
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT ME
+    ========================= -->
+
+    <section id="about">
+
+        <div class="section-number">
+            02 — ABOUT ME
+        </div>
+
+        <h2>
+            A few things about me.
+        </h2>
+
+        <div class="section-text">
+
+            Not a biography.
+
+            Just random little pieces that somehow
+            make me... me.
+
+        </div>
+
+
+        <div class="facts">
+
+            <div class="fact">
+
+                <div class="fact-title">
+                    Name
+                </div>
+
+                <div class="fact-value">
+                    Miranda
+                </div>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-title">
+                    Personality
+                </div>
+
+                <div class="fact-value">
+                    Quiet sometimes. Chaotic sometimes.
+                </div>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-title">
+                    Favorite thing
+                </div>
+
+                <div class="fact-value">
+                    Getting lost in my own thoughts.
+                </div>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-title">
+                    Current status
+                </div>
+
+                <div class="fact-value">
+                    Figuring things out.
+                </div>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-title">
+                    Life motto
+                </div>
+
+                <div class="fact-value">
+                    We'll see what happens.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LITTLE THINGS
+    ========================= -->
+
+    <section id="little">
+
+        <div class="section-number">
+            03 — LITTLE THINGS
+        </div>
+
+        <h2>
+            Things that make me happy.
+        </h2>
+
+        <div class="section-text">
+
+            Maybe happiness isn't always
+            something big.
+
+            Sometimes it's just a collection
+            of very small things.
+
+        </div>
+
+
+        <div class="little-grid">
+
+            <div class="little-card">
+
+                <h3>
+                    ☕ Quiet mornings
+                </h3>
+
+                <p>
+                    The kind where nobody expects anything
+                    from me yet.
+                </p>
+
+            </div>
+
+
+            <div class="little-card">
+
+                <h3>
+                    🎧 Music
+                </h3>
+
+                <p>
+                    Especially when one song somehow
+                    understands me better than people do.
+                </p>
+
+            </div>
+
+
+            <div class="little-card">
+
+                <h3>
+                    🌧 Rain
+                </h3>
+
+                <p>
+                    Somehow everything feels softer
+                    when it's raining.
+                </p>
+
+            </div>
+
+
+            <div class="little-card">
+
+                <h3>
+                    📖 Stories
+                </h3>
+
+                <p>
+                    Real ones. Fictional ones.
+                    Sometimes the ones I create in my head.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         THINGS I NEVER SAID
+    ========================= -->
+
+    <section id="never-said">
+
+        <div class="section-number">
+            04 — THINGS I NEVER SAID
+        </div>
+
+        <h2>
+            Things that stayed inside.
+        </h2>
+
+
+        <div class="letter">
+
+            <p>
+                There are things I wanted to say
+                but never found the right moment.
+            </p>
+
+            <p>
+                Things that sounded better in my head.
+            </p>
+
+            <p>
+                Things that were probably better
+                left unsaid.
+            </p>
+
+            <p>
+                And maybe someday,
+                I'll write them all down here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         DIARY ARCHIVE
+    ========================= -->
+
+    <section id="archive">
+
+        <div class="section-number">
+            05 — DIARY
+        </div>
+
+        <h2>
+            My little archive.
+        </h2>
+
+        <div class="section-text">
+
+            A collection of random days,
+            random thoughts,
+            and moments I don't want to forget.
+
+        </div>
+
+
+        <div class="archive">
+
+
+            <!-- ENTRY 1 -->
+
+            <div class="entry">
+
+                <button
+                    class="entry-header"
+                    onclick="toggleEntry(this)"
+                >
+
+                    <div>
+
+                        <div class="entry-date">
+                            August 25, 2026
+                        </div>
+
+                        <div class="entry-title">
+                            Maybe this is a new beginning.
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                </button>
+
+
+                <div class="entry-content">
+
+                    Today I decided to make a little
+                    corner of the internet for myself.
+
+                    A place where I can write things
+                    without worrying too much about
+                    whether they make sense.
+
+                    Maybe someone will read them.
+
+                    Maybe nobody will.
+
+                    Either way...
+
+                    I think I like having this place.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ENTRY 2 -->
+
+            <div class="entry">
+
+                <button
+                    class="entry-header"
+                    onclick="toggleEntry(this)"
+                >
+
+                    <div>
+
+                        <div class="entry-date">
+                            Somewhere in the past
+                        </div>
+
+                        <div class="entry-title">
+                            A thought I almost forgot.
+                        </div>
+
+                    </div>
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                </button>
+
+
+                <div class="entry-content">
+
+                    Sometimes we don't realize
+                    how much a small moment means
+                    until it's already a memory.
+
+                    Maybe that's why I want
+                    to write things down.
+
+                    So I don't forget.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FINAL -->
+
+    <div class="final-message">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <p>
+            Thanks for staying this long.
+        </p>
+
+        <p class="italic">
+            Maybe now you know a tiny bit more about me.
+        </p>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        A Place To Feel
+        <br>
+        ~ Miranda
+
+    </footer>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================
+       CURRENT DATE
+    ========================= */
+
+    const date = new Date();
+
+    const dateOptions = {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
+
+    document.getElementById("currentDate").textContent =
+        date.toLocaleDateString("en-US", dateOptions);
+
+
+
+    /* =========================
+       OPEN / CLOSE DIARY
+    ========================= */
+
+    function toggleEntry(button) {
+
+        const entry =
+            button.parentElement;
+
+        entry.classList.toggle("active");
+
+    }
+
+
+</script>
+
+
+</body>
+</html>
