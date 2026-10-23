@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +11,89 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --background: #f7f1eb;
+            --text: #4b4141;
+            --border: #d4c8c0;
+            --muted: #8c7b7b;
+        }
+
         body {
             margin: 0;
-            min-height: 100vh;
+            font-family: Georgia, serif;
+            background: var(--background);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* JAM DAN TANGGAL */
+        .clock {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 30;
+            text-align: right;
+            font-size: 11px;
+            line-height: 1.7;
+            background: var(--background);
+            padding: 5px 8px;
+        }
+
+        /* NAVIGASI */
+        .navigation {
+            position: fixed;
+            top: 16px;
+            left: 12px;
+            z-index: 30;
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-button {
+            border: 1px solid var(--border);
+            background: var(--background);
+            color: var(--text);
+            padding: 7px 10px;
+            font-family: Georgia, serif;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* HALAMAN SWIPE */
+        .pages {
+            display: flex;
+            width: 100vw;
+            height: 100dvh;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            overscroll-behavior-x: contain;
+        }
+
+        .pages::-webkit-scrollbar {
+            display: none;
+        }
+
+        .page {
+            width: 100vw;
+            min-width: 100vw;
+            height: 100%;
+            flex-shrink: 0;
+            overflow-y: auto;
+            scroll-snap-align: start;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Georgia, serif;
-            background: #f7f1eb;
-            color: #4b4141;
+            padding: 75px 24px 65px;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 600px;
+            margin: auto;
             text-align: center;
-            padding: 50px 30px;
         }
 
         .heart {
@@ -34,57 +102,73 @@
         }
 
         h1 {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: normal;
             letter-spacing: 3px;
-            margin: 0 0 15px;
+            line-height: 1.4;
+            margin: 0 0 20px;
+        }
+
+        h2 {
+            font-size: 23px;
+            font-weight: normal;
+            letter-spacing: 1px;
         }
 
         .subtitle {
             font-size: 16px;
             font-style: italic;
-            line-height: 1.7;
-            margin-bottom: 35px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            overflow-wrap: anywhere;
         }
 
-        .enter-button {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid #8c7b7b;
-            text-decoration: none;
-            color: #4b4141;
-            font-size: 14px;
-            letter-spacing: 2px;
-            transition: 0.3s;
-            cursor: pointer;
-            background: transparent;
-        }
-
-        .enter-button:hover {
-            background: #4b4141;
-            color: white;
+        .post-date {
+            font-size: 12px;
+            opacity: 0.65;
+            margin-bottom: 18px;
         }
 
         .footer {
-            margin-top: 50px;
+            margin-top: 35px;
             font-size: 12px;
-            opacity: 0.6;
+            line-height: 1.8;
+            opacity: 0.65;
         }
 
-        /* Password Box */
+        .enter-button,
+        .unlock-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid var(--muted);
+            background: transparent;
+            color: var(--text);
+            font-family: Georgia, serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
+        .enter-button:hover,
+        .unlock-button:hover,
+        .nav-button:hover {
+            background: var(--text);
+            color: white;
+        }
+
+        /* PASSWORD */
         .password-box {
             display: none;
-            margin-top: 30px;
-            padding: 25px;
-            border-top: 1px solid #d4c8c0;
-            border-bottom: 1px solid #d4c8c0;
+            margin-top: 25px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .password-box p {
             font-size: 14px;
+            line-height: 1.7;
             font-style: italic;
-            line-height: 1.6;
         }
 
         .password-input {
@@ -94,26 +178,9 @@
             margin-top: 10px;
             border: 1px solid #b8aaa2;
             background: transparent;
-            color: #4b4141;
+            color: var(--text);
             text-align: center;
             font-family: Georgia, serif;
-            outline: none;
-        }
-
-        .unlock-button {
-            margin-top: 15px;
-            padding: 10px 25px;
-            border: 1px solid #8c7b7b;
-            background: transparent;
-            color: #4b4141;
-            cursor: pointer;
-            font-family: Georgia, serif;
-            letter-spacing: 1px;
-        }
-
-        .unlock-button:hover {
-            background: #4b4141;
-            color: white;
         }
 
         .error-message {
@@ -123,95 +190,437 @@
             font-style: italic;
         }
 
+        /* POSTINGAN LAMA */
+        .old-post {
+            text-align: left;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .old-post:last-child {
+            border-bottom: none;
+        }
+
+        .old-post h3 {
+            font-weight: normal;
+            font-size: 19px;
+            margin: 8px 0;
+        }
+
+        .old-post p {
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .small-date {
+            font-size: 11px;
+            opacity: 0.65;
+        }
+
+        /* FOTO DAN VIDEO */
+        .media-picker {
+            display: block;
+            width: 100%;
+            margin: 15px auto;
+            padding: 12px;
+            border: 1px dashed var(--muted);
+            font-family: Georgia, serif;
+            color: var(--text);
+            background: transparent;
+        }
+
+        .media-preview img,
+        .media-preview video {
+            display: block;
+            max-width: 100%;
+            max-height: 45vh;
+            margin: 20px auto;
+            object-fit: contain;
+        }
+
+        .note {
+            font-size: 12px;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        /* TITIK NAVIGASI */
+        .page-navigation {
+            position: fixed;
+            z-index: 25;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--background);
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+
+        .page-dot {
+            border: none;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            background: var(--muted);
+            opacity: 0.35;
+            cursor: pointer;
+        }
+
+        .page-dot.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .swipe-hint {
+            font-size: 11px;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .page {
+                padding: 75px 22px 65px;
+            }
+
+            .clock {
+                font-size: 10px;
+            }
+
+            .navigation {
+                gap: 4px;
+            }
+
+            .nav-button {
+                padding: 6px;
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-
-        <div class="heart">＼(^_^)／ </div>
-
-        <h1>WELCOME TO MY<br>
-        BRAIN DUMP</h1>
-
-        <div class="subtitle">
-            <br>
-
-Selain kondisi Indonesia yang sedang tidak baik-baik saja, akhir-akhir ini Trend Stop The Wedding juga lagi 
-            booming. Kalo dilihat-lihat salah 1 penyebabnya karna perselingkuhan. Humm...
-            Orang-orang pada kenapa sih? Matikah kalo setia sama pasangannya? ckckck
-        </div>
-
-        <button class="enter-button" onclick="showPassword()">
-            ENTER
-        </button>
-
-        <div class="password-box" id="passwordBox">
-
-            <p>
-                🔐 A little clue:<br>
-                The password is my father's birthday.
-            </p>
-
-            <input
-                type="password"
-                id="passwordInput"
-                class="password-input"
-                placeholder="Enter password"
-            >
-
-            <br>
-
-            <button class="unlock-button" onclick="checkPassword()">
-                UNLOCK
-            </button>
-
-            <div class="error-message" id="errorMessage">
-                Humm... that's not it. Try again. :D
-            </div>
-
-        </div>
-
-        <div class="footer">
-            "Hidup mengajarkan ku banyak hal. Tapi aku pelupa. Makanya keulang lagi.:)"
-            
-                  - 17 Oktober 2026. ~Miranda
-        </div>
-
+    <!-- JAM OTOMATIS -->
+    <div class="clock">
+        <div id="clockTime">00:00:00</div>
+        <div id="clockDate">Memuat tanggal...</div>
     </div>
 
+    <!-- NAVIGASI ATAS -->
+    <nav class="navigation">
+        <button class="nav-button" onclick="goToPage(0)">HOME</button>
+        <button class="nav-button" onclick="goToPage(1)">ARCHIVE</button>
+        <button class="nav-button" onclick="goToPage(2)">MEDIA</button>
+        <button class="nav-button" onclick="goToPage(3)">ENTER</button>
+    </nav>
+
+    <!-- SEMUA HALAMAN ADA DI DALAM SATU FILE -->
+    <main class="pages" id="pages">
+
+        <!-- =================================================
+             PAGE 1: POSTINGAN TERBARU
+             EDIT TULISAN TERBARU DI BAGIAN INI
+        ================================================== -->
+        <section class="page">
+            <div class="container">
+
+                <div class="heart">＼(^_^)／</div>
+
+                <h1>WELCOME TO MY<br>BRAIN DUMP</h1>
+
+                <div class="post-date">17 Oktober 2026</div>
+
+                <div class="subtitle">
+                    <br>
+
+                    Selain kondisi Indonesia yang sedang tidak baik-baik saja, akhir-akhir ini Trend Stop The Wedding juga lagi
+                    booming. Kalo dilihat-lihat salah 1 penyebabnya karna perselingkuhan. Humm...
+                    Orang-orang pada kenapa sih? Matikah kalo setia sama pasangannya? ckckck
+                </div>
+
+                <div class="footer">
+                    "Hidup mengajarkan ku banyak hal. Tapi aku pelupa. Makanya keulang lagi.:)"
+                    <br><br>
+                    - 17 Oktober 2026. ~Miranda
+                </div>
+
+                <div class="swipe-hint">SWIPE KE KIRI →</div>
+
+            </div>
+        </section>
+
+        <!-- =================================================
+             PAGE 2: POSTINGAN LAMA
+             TAMBAHKAN POSTINGAN BARU DI PALING ATAS BAGIAN INI.
+             POSTINGAN LAMA TIDAK PERLU DIHAPUS.
+        ================================================== -->
+        <section class="page">
+            <div class="container">
+
+                <div class="heart">♡</div>
+                <h1>MY LITTLE<br>ARCHIVE</h1>
+
+                <p class="note">
+                    A collection of thoughts I wanted to keep.
+                </p>
+
+                <!-- CONTOH FORMAT POSTINGAN LAMA:
+                <article class="old-post">
+                    <div class="small-date">26 September 2026</div>
+                    <h3>Judul postingan</h3>
+                    <p>Tulisan postingan lama kamu di sini.</p>
+                </article>
+                -->
+
+                <article class="old-post">
+                    <div class="small-date">Postingan sebelumnya</div>
+                    <h3>Ruang untuk kenangan lama ♡</h3>
+                    <p>Mulai sekarang, setiap postingan yang sudah tidak terbaru bisa kamu pindahkan ke halaman archive ini. Tambahkan postingan lama di bagian paling atas agar urutannya tetap dari yang terbaru ke yang terlama.</p>
+                </article>
+
+                <div class="swipe-hint">← SWIPE KE KANAN / KIRI →</div>
+
+            </div>
+        </section>
+
+        <!-- =================================================
+             PAGE 3: FOTO DAN VIDEO
+        ================================================== -->
+        <section class="page">
+            <div class="container">
+
+                <div class="heart">♡</div>
+                <h1>A LITTLE<br>MEMORY</h1>
+
+                <p class="subtitle">
+                    Choose a photo or video to preview.
+                </p>
+
+                <label for="photoUpload">Pilih foto</label>
+                <input
+                    class="media-picker"
+                    type="file"
+                    id="photoUpload"
+                    accept="image/*"
+                >
+
+                <label for="videoUpload">Pilih video</label>
+                <input
+                    class="media-picker"
+                    type="file"
+                    id="videoUpload"
+                    accept="video/*"
+                >
+
+                <div class="media-preview" id="mediaPreview"></div>
+
+                <p class="note">
+                    Catatan: file yang dipilih di sini hanya tampil sebagai preview
+                    di browser kamu. File ini belum tersimpan ke website publik.
+                    Untuk menampilkannya kepada semua pengunjung, unggah file ke
+                    repository GitHub dan tambahkan alamat file ke kode HTML.
+                </p>
+
+                <div class="swipe-hint">SWIPE KE KIRI →</div>
+
+            </div>
+        </section>
+
+        <!-- =================================================
+             PAGE 4: ENTER DIARY
+        ================================================== -->
+        <section class="page">
+            <div class="container">
+
+                <div class="heart">♡</div>
+
+                <h1>A PLACE<br>TO FEEL</h1>
+
+                <div class="subtitle">
+                    There are things I don't say out loud.
+                    <br><br>
+                    Maybe I can leave them here instead.
+                </div>
+
+                <button class="enter-button" onclick="showPassword()">
+                    ENTER
+                </button>
+
+                <div class="password-box" id="passwordBox">
+                    <p>
+                        🔐 A little clue:<br>
+                        The password is my father's birthday.
+                    </p>
+
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        class="password-input"
+                        placeholder="Enter password"
+                    >
+
+                    <br>
+
+                    <button class="unlock-button" onclick="checkPassword()">
+                        UNLOCK
+                    </button>
+
+                    <div class="error-message" id="errorMessage">
+                        Humm... that's not it. Try again. :D
+                    </div>
+                </div>
+
+                <div class="swipe-hint">← SWIPE BACK</div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- TITIK PAGE NAVIGATION -->
+    <div class="page-navigation" aria-label="Navigasi halaman">
+        <button class="page-dot active" aria-label="Halaman 1" onclick="goToPage(0)"></button>
+        <button class="page-dot" aria-label="Halaman 2" onclick="goToPage(1)"></button>
+        <button class="page-dot" aria-label="Halaman 3" onclick="goToPage(2)"></button>
+        <button class="page-dot" aria-label="Halaman 4" onclick="goToPage(3)"></button>
+    </div>
 
     <script>
+        /* =====================================
+           JAM, HARI, TANGGAL, BULAN, TAHUN
+        ===================================== */
+        function updateClock() {
+            const now = new Date();
 
+            document.getElementById("clockTime").textContent =
+                now.toLocaleTimeString("id-ID", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: false
+                });
+
+            document.getElementById("clockDate").textContent =
+                now.toLocaleDateString("id-ID", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        /* =====================================
+           NAVIGASI SWIPE DAN TITIK HALAMAN
+        ===================================== */
+        const pages = document.getElementById("pages");
+        const dots = document.querySelectorAll(".page-dot");
+
+        function goToPage(index) {
+            const pageWidth = pages.clientWidth;
+
+            pages.scrollTo({
+                left: pageWidth * index,
+                behavior: "smooth"
+            });
+        }
+
+        function updateDots() {
+            const currentPage = Math.round(
+                pages.scrollLeft / pages.clientWidth
+            );
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentPage);
+            });
+        }
+
+        pages.addEventListener("scroll", updateDots);
+
+        window.addEventListener("resize", updateDots);
+
+        /* =====================================
+           PASSWORD
+        ===================================== */
         function showPassword() {
             document.getElementById("passwordBox").style.display = "block";
             document.getElementById("passwordInput").focus();
         }
 
         function checkPassword() {
-
-            const password = document.getElementById("passwordInput").value;
-
-            /*
-            GANTI PASSWORD DI BAWAH INI
-            Contoh:
-            "15011965"
-            */
+            const password =
+                document.getElementById("passwordInput").value;
 
             const correctPassword = "27021968";
 
             if (password === correctPassword) {
-
                 window.location.href = "diary.html";
-
             } else {
-
                 document.getElementById("errorMessage").style.display = "block";
-
             }
         }
 
+        document.getElementById("passwordInput").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        /* =====================================
+           PREVIEW FOTO DAN VIDEO
+        ===================================== */
+        let currentPhotoURL = null;
+        let currentVideoURL = null;
+
+        document.getElementById("photoUpload").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (currentPhotoURL) URL.revokeObjectURL(currentPhotoURL);
+            currentPhotoURL = URL.createObjectURL(file);
+
+            const preview = document.getElementById("mediaPreview");
+            const img = document.createElement("img");
+
+            img.src = currentPhotoURL;
+            img.alt = "Preview foto";
+
+            preview.replaceChildren(img);
+        });
+
+        document.getElementById("videoUpload").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (currentVideoURL) URL.revokeObjectURL(currentVideoURL);
+            currentVideoURL = URL.createObjectURL(file);
+
+            const preview = document.getElementById("mediaPreview");
+            const video = document.createElement("video");
+
+            video.src = currentVideoURL;
+            video.controls = true;
+            video.playsInline = true;
+
+            preview.replaceChildren(video);
+        });
     </script>
 
 </body>
